@@ -165,7 +165,7 @@ Create a new order
 - identifier: Unique identifier string for an insert. If matched to an existing identifier in your account, then the insert graphic will be reused.
 - preview_url: Location of preview image. We will retrieve the image asynchronously from this url.
 
-## New Order Response Example
+## New Order Response
 
 > Status Code 200 OK
 

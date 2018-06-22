@@ -1,7 +1,7 @@
 # Multiple Order Status
 Request status of 100 most recent orders, with pagination.
 
-## Request
+## Multiple Order Status Request
 	`GET http://api.thedreamjunction.com/api/v3/orders`  
 	`Content-Type: application/json`  
 	`Authorization: Token token=<16-24 character API key>`
@@ -11,7 +11,7 @@ Request status of 100 most recent orders, with pagination.
 	`Content-Type: application/json`  
 	`Authorization: Token token=<16-24 character API key>`
 
-### Example Response
+## Multiple Order Status Response
 
 ```jso
     {

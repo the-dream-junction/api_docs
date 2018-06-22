@@ -11,7 +11,7 @@ Request the current quantity in stock by SKU.
 	 `Content-Type: application/json`  
 	 `Authorization: Token token=<16-24 character API key>`
 
-### Example Response
+## Stock Check Example Response 
 ```json
 	 {
   		"id": 14,
