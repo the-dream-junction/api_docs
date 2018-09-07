@@ -3,9 +3,9 @@
 Create a new order
 ### New Order Request
 
-`POST http://api.thedreamjunction.com/api/v3/orders`  
-`Content-Type: application/json`    
-`Authorization: Token token=<16-24 character API key>`  
+`POST http://api.thedreamjunction.com/api/v3/orders`
+`Content-Type: application/json`
+`Authorization: Token token=<16-24 character API key>`
 
 ### New Order Arguments
 
@@ -59,6 +59,18 @@ Create a new order
             "color": "asphalt",
             "size": "large"
           },
+          "custom_tags": [
+            {
+              "tag_code": "HEC",
+              "tag_type": "hang tag",
+              "image": "https://s3.amazonaws.com/pms-masters/2/IN.HO/BRJZ02101/M/S.png"
+            },
+            {
+              "tag_code": "A",
+              "tag_type": "hang tag",
+              "image": "https://s3.amazonaws.com/pms-masters/2/IN.HO/BRJZ02301/M/S.png"
+            }
+          ],
           "designs": [
             {
               "placement": "Front Center",
@@ -179,8 +191,8 @@ Create a new order
 Status Code 200 OK
 
 ## Failed New Order Response Examples
-> duplicate order  
-> Status Code 422 Unprocessable Entity  
+> duplicate order
+> Status Code 422 Unprocessable Entity
 
 ```json
     {
@@ -190,7 +202,7 @@ Status Code 200 OK
     }
 ```
 
-  > missing items  
+  > missing items
   > Status Code 422 Unprocessable Entity
 
   ```json
@@ -201,7 +213,7 @@ Status Code 200 OK
   }
   ```
 
-  > missing skus  
+  > missing skus
   > Status Code 422 Unprocessable Entity
 
   ```json
@@ -211,7 +223,7 @@ Status Code 200 OK
     }
   ```
 
-  > missing designs  
+  > missing designs
   > Status Code 422 Unprocessable Entity
 
   ```json
@@ -221,4 +233,4 @@ Status Code 200 OK
   }
 ```
 
-Status Code 422 Unprocessable Entity  
+Status Code 422 Unprocessable Entity
