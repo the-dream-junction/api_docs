@@ -61,14 +61,12 @@ Create a new order
           },
           "custom_tags": [
             {
-              "tag_code": "HEC",
+              "tag_code": "NewTag",
               "tag_type": "hang tag",
               "image": "https://s3.amazonaws.com/pms-masters/2/IN.HO/BRJZ02101/M/S.png"
             },
             {
-              "tag_code": "A",
-              "tag_type": "hang tag",
-              "image": "https://s3.amazonaws.com/pms-masters/2/IN.HO/BRJZ02301/M/S.png"
+              "tag_code": "ExistingTag"
             }
           ],
           "designs": [
