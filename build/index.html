@@ -459,6 +459,7 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 <li>description (optional): Description of the product, usually used to describe the garment</li>
 <li>quantity: Integer of 1 or greater.</li>
 <li>attributes: If the sku is not provided, the attributes must be provided. Not all combinations are available. Refer to a Dream Junction SKUs list.
+<li>custom_tags: Provide the tag code of the tag(s) associated to your account to be used. If it's a new tag please provide a tag type and an image.</li>
 
 <ul>
 <li>style: Short identifier matching Dream Junction garment style</li>
@@ -471,7 +472,7 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 :   Array of one or more designs to apply to an item.</p>
 
 <ul>
-<li>placement: Unspecified is default and will result in a front print. Possible values currently: &#39;Front&#39;, &#39;Back&#39;</li>
+<li>placement: Unspecified is default and will result in a front print. Possible values currently: &#39;Front&#39;, &#39;Back&#39, &#39;Neck&#39;</li>
 <li>art_file: Filename for print ready art. If not available locally, we will retrieve asynchronously from the art_url and name the retrieved file with this art_file name.</li>
 <li>art_url: Location of print ready art. If art_file is not available locally, we will retrieve it asynchronously from this url.</li>
 <li>thumbnail_url: Location of thumbnail. If not available locally, we will retrieve it asynchronously from this url.</li>
