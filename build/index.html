@@ -314,9 +314,9 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 <h1 id='new-order'>New Order</h1>
 <p>Create a new order</p>
 <h3 id='new-order-request'>New Order Request</h3>
-<p><code>POST http://api.thedreamjunction.com/api/v3/orders</code><br>
-<code>Content-Type: application/json</code><br>
-<code>Authorization: Token token=&lt;16-24 character API key&gt;</code>  </p>
+<p><code>POST http://api.thedreamjunction.com/api/v3/orders</code>
+<code>Content-Type: application/json</code>
+<code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
 <h3 id='new-order-arguments'>New Order Arguments</h3>
 <blockquote>
 <p>Example</p>
@@ -368,6 +368,16 @@ You must replace <code>key</code> with your personal 16-24 character API key.
             </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asphalt"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="w">
           </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"custom_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"tag_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewTag"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"tag_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hang tag"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/pms-masters/2/IN.HO/BRJZ02101/M/S.png"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"tag_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ExistingTag"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
           </span><span class="s2">"designs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="s2">"placement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Front Center"</span><span class="p">,</span><span class="w">
@@ -459,7 +469,6 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 <li>description (optional): Description of the product, usually used to describe the garment</li>
 <li>quantity: Integer of 1 or greater.</li>
 <li>attributes: If the sku is not provided, the attributes must be provided. Not all combinations are available. Refer to a Dream Junction SKUs list.
-<li>custom_tags: Provide the tag code of the tag(s) associated to your account to be used. If it's a new tag please provide a tag type and an image.</li>
 
 <ul>
 <li>style: Short identifier matching Dream Junction garment style</li>
@@ -472,7 +481,7 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 :   Array of one or more designs to apply to an item.</p>
 
 <ul>
-<li>placement: Unspecified is default and will result in a front print. Possible values currently: &#39;Front&#39;, &#39;Back&#39, &#39;Neck&#39;</li>
+<li>placement: Unspecified is default and will result in a front print. Possible values currently: &#39;Front&#39;, &#39;Back&#39;</li>
 <li>art_file: Filename for print ready art. If not available locally, we will retrieve asynchronously from the art_url and name the retrieved file with this art_file name.</li>
 <li>art_url: Location of print ready art. If art_file is not available locally, we will retrieve it asynchronously from this url.</li>
 <li>thumbnail_url: Location of thumbnail. If not available locally, we will retrieve it asynchronously from this url.</li>
@@ -499,8 +508,8 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 <p>Status Code 200 OK</p>
 <h2 id='failed-new-order-response-examples'>Failed New Order Response Examples</h2>
 <blockquote>
-<p>duplicate order<br>
-Status Code 422 Unprocessable Entity  </p>
+<p>duplicate order
+Status Code 422 Unprocessable Entity</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unprocessable_entity"</span><span class="p">,</span><span class="w">
@@ -509,7 +518,7 @@ Status Code 422 Unprocessable Entity  </p>
     </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>missing items<br>
+<p>missing items
 Status Code 422 Unprocessable Entity</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">
@@ -519,7 +528,7 @@ Status Code 422 Unprocessable Entity</p>
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>missing skus<br>
+<p>missing skus
 Status Code 422 Unprocessable Entity</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
@@ -528,7 +537,7 @@ Status Code 422 Unprocessable Entity</p>
     </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>missing designs<br>
+<p>missing designs
 Status Code 422 Unprocessable Entity</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
@@ -536,7 +545,7 @@ Status Code 422 Unprocessable Entity</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item is missing one or more designs"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Status Code 422 Unprocessable Entity  </p>
+<p>Status Code 422 Unprocessable Entity</p>
 <h1 id='order-status'>Order Status</h1>
 <p>Request status of a single order</p>
 <h3 id='order-status-arguments'>Order Status Arguments</h3>
