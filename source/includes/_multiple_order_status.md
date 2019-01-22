@@ -23,7 +23,7 @@ Request status of 100 most recent orders, with pagination.
       "order": {
         "id": 999,
         "purchase_order": "123456789",
-        "created_at": "2014-06-30T23:56:24.691-07:00",
+        "created_at": "2018-06-30T23:56:24.691-07:00",
         "status": "open",
         "client_amount": 5.25,
         "items": [
@@ -41,7 +41,7 @@ Request status of 100 most recent orders, with pagination.
       "order": {
         "id": 998,
         "purchase_order": "987654321",
-        "created_at": "2014-06-30T23:00:25.492-07:00",
+        "created_at": "2018-06-30T23:00:25.492-07:00",
         "status": "open",
     ...
 }
@@ -59,10 +59,10 @@ To retrieve a list of orders, optional url parameters listed below can be used i
 : The status of the orders to retrieve. Order status can be received, open, packaged, shipped and canceled.
 
 **created_at_min**
-: Show orders created after date (format: 02-25-2015).
+: Show orders created after date (format: 02-25-2018).
 
 **created_at_max**
-: Show orders created before date (format: 02-26-2015).
+: Show orders created before date (format: 02-26-2018).
 
 **limit**
 : Amount of results. Default is 100. Maximum is 200.

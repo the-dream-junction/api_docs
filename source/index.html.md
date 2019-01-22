@@ -29,8 +29,8 @@ This API supports JSON for requests and responses.
 
 Each request requires an API key in the request header. Each account is assigned an API key. Contact support for your API key.
 
-  `Name: Authorization`  
-  `Value: Token token=<key>`
+`Name: Authorization`  
+`Value: Token token=<key>`
 
 <aside class="notice">
 You must replace <code>key</code> with your personal 16-24 character API key.

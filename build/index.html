@@ -219,6 +219,9 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
+          </li>
+          <li>
             <a href="#format" class="toc-h1 toc-link" data-title="format">Format</a>
           </li>
           <li>
@@ -231,7 +234,7 @@
                     <a href="#new-order-request" class="toc-h2 toc-link" data-title="new-order-request">New Order Request</a>
                   </li>
                   <li>
-                    <a href="#new-order-arguments" class="toc-h2 toc-link" data-title="new-order-arguments">New Order Arguments</a>
+                    <a href="#new-order-parameters" class="toc-h2 toc-link" data-title="new-order-parameters">New Order Parameters</a>
                   </li>
                   <li>
                     <a href="#new-order-response" class="toc-h2 toc-link" data-title="new-order-response">New Order Response</a>
@@ -251,7 +254,13 @@
                     <a href="#order-status-request-by-order-id" class="toc-h2 toc-link" data-title="order-status-request-by-order-id">Order Status Request by Order ID</a>
                   </li>
                   <li>
+                    <a href="#example-request-by-order-id" class="toc-h2 toc-link" data-title="example-request-by-order-id">Example Request by Order ID</a>
+                  </li>
+                  <li>
                     <a href="#order-status-request-by-purchase-order" class="toc-h2 toc-link" data-title="order-status-request-by-purchase-order">Order Status Request by Purchase Order</a>
+                  </li>
+                  <li>
+                    <a href="#example-request-by-purchase-order" class="toc-h2 toc-link" data-title="example-request-by-purchase-order">Example Request by Purchase Order</a>
                   </li>
                   <li>
                     <a href="#order-status-example-response" class="toc-h2 toc-link" data-title="order-status-example-response">Order Status Example Response</a>
@@ -266,6 +275,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#multiple-order-status-request" class="toc-h2 toc-link" data-title="multiple-order-status-request">Multiple Order Status Request</a>
+                  </li>
+                  <li>
+                    <a href="#example-request" class="toc-h2 toc-link" data-title="example-request">Example Request</a>
                   </li>
                   <li>
                     <a href="#multiple-order-status-response" class="toc-h2 toc-link" data-title="multiple-order-status-response">Multiple Order Status Response</a>
@@ -285,6 +297,9 @@
                     <a href="#stock-check-request" class="toc-h2 toc-link" data-title="stock-check-request">Stock Check Request</a>
                   </li>
                   <li>
+                    <a href="#stock-check-example-request" class="toc-h2 toc-link" data-title="stock-check-example-request">Stock Check Example Request</a>
+                  </li>
+                  <li>
                     <a href="#stock-check-example-response" class="toc-h2 toc-link" data-title="stock-check-example-response">Stock Check Example Response</a>
                   </li>
               </ul>
@@ -300,129 +315,141 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='format'>Format</h1>
-<p>This API supports only JSON for requests and responses.</p>
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Dream Junction API documentation. If you have any questions please contact: <a href="mailto:admin@thedreamjunction.com">admin@thedreamjunction.com</a></p>
+<h1 id='format'>Format</h1>
+<p>This API supports JSON for requests and responses.</p>
 <h1 id='authentication'>Authentication</h1>
-<p>Each request requires an API key in the request header. Each user is assigned an API key. Contact support for your API key.</p>
+<p>Each request requires an API key in the request header. Each account is assigned an API key. Contact support for your API key.</p>
 
 <p><code>Name: Authorization</code><br>
-    <code>Value: Token token=&lt;key&gt;</code></p>
+<code>Value: Token token=&lt;key&gt;</code></p>
 
 <aside class="notice">
 You must replace <code>key</code> with your personal 16-24 character API key.
 </aside>
 <h1 id='new-order'>New Order</h1>
-<p>Create a new order</p>
-<h3 id='new-order-request'>New Order Request</h3>
-<p><code>POST http://api.thedreamjunction.com/api/v3/orders</code>
-<code>Content-Type: application/json</code>
+<p>Submit a new order request.</p>
+<h2 id='new-order-request'>New Order Request</h2>
+<p><code>POST https://api.thedreamjunction.com/api/v3/orders</code><br>
+<code>Content-Type: application/json</code><br>
 <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
-<h3 id='new-order-arguments'>New Order Arguments</h3>
+<h2 id='new-order-parameters'>New Order Parameters</h2>
 <blockquote>
 <p>Example</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"account_zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92704"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"purchase_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1729598549"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"garments_provided"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ship_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DHL"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ship_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ground"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ship_to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Dream Junction"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main St"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apt 1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Portland"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oregon"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"97034"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johnsmith@gmail.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"800-555-1212"</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"account_zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92704"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"purchase_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1729598549"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"garments_provided"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ship_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DHL"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ship_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ground"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ship_to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Dream Junction"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main St"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apt 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Portland"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"97034"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johnsmith@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"800-555-1212"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"ship_from"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Dream Junction"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1915 S Susan St"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Santa Ana"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92704"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"order_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beware the ferocious guard cat."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shipping_label_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://clientdomain.com/services/receipt?id=1729598549"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"production_priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"customer_sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"574247-15"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2001_ASPHALT_L"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Breathe!"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T-shirt - Womens Fitted Tee White LARGE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ASPHALT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"L"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"ship_from"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Dream Junction"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1915 S Susan St"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Santa Ana"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92704"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"order_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beware the ferocious guard cat."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"shipping_label_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://clientdomain.com/services/receipt?id=1729598549"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"production_priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"custom_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"customer_sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"574247-15"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2001_ASPHALT_L"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Breathe!"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T-shirt - Womens Fitted Tee White LARGE"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2001"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asphalt"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">"custom_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"tag_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewTag"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"tag_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hang tag"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/pms-masters/2/IN.HO/BRJZ02101/M/S.png"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"tag_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ExistingTag"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"designs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"placement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Front Center"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"art_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"art.tif"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"art_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:</span><span class="se">\/\/</span><span class="s2">clientdomain.com</span><span class="se">\/</span><span class="s2">wp-content</span><span class="se">\/</span><span class="s2">assets</span><span class="se">\/</span><span class="s2">art.tif"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"thumbnail_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:</span><span class="se">\/\/</span><span class="s2">clientdomain.com</span><span class="se">\/</span><span class="s2">wp-content</span><span class="se">\/</span><span class="s2">assets</span><span class="se">\/</span><span class="s2">thumbnail.jpg"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"underbase"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+          </span><span class="s2">"tag_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewTag"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tag_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hang tag"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/pms-masters/2/IN.HO/BRJZ02101/M/S.png"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"tag_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ExistingTag"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"inserts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insert-card-10-off-spring"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"preview_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:</span><span class="se">\/\/</span><span class="s2">clientdomain.com</span><span class="se">\/</span><span class="s2">wp-content</span><span class="se">\/</span><span class="s2">assets</span><span class="se">\/</span><span class="s2">insert.jpg"</span><span class="w">
-     </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+      </span><span class="s2">"designs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"placement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Front Center"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"art_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"art.tif"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"art_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://clientdomain.com/wp-content/assets/art.tif"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"thumbnail_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://clientdomain.com/wp-content/assets/thumbnail.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"underbase"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"inserts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insert-card-10-off-spring"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"preview_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://clientdomain.com/wp-content/assets/insert.jpg"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>type</strong>
-:    Set to order</p>
+: Set to order</p>
 
 <p><strong>account_id</strong>
-:   Assigned during your account setup. Contact support for your account number.</p>
+: Assigned during your account setup. Contact support for your account number.</p>
 
 <p><strong>account_zip</strong>
-:   Assigned during your account setup. Contact support for your account zip.</p>
+: Assigned during your account setup. Contact support for your account zip.</p>
 
 <p><strong>purchase_order</strong>
-:   Any purchase order or internally assigned identifier. Must be unique to each order submission.</p>
+: Any purchase order or internally assigned identifier. Must be unique to each order submission.</p>
 
-<p><strong>ship_provider (optional)</strong>
-:   Describe carrier for shipping. Options include: UPS, USPS, FedEx or DHL. DHL is our preferred service, but other services can be discussed.</p>
+<p><strong>ship_provider</strong>
+: The shipping provider to be used for the order. Options include:</p>
+
+<ul>
+<li>UPS</li>
+<li>USPS</li>
+<li>FedEx</li>
+<li>OSM</li>
+<li>DHL</li>
+</ul>
+
+<p>OSM is our default domestic service provider. DHL is our default international service provider. If other service providers are needed please contact your account representative as additional setup may be required.</p>
 
 <p><strong>ship_method (optional)</strong>
-:   Describe service level for shipping provider. Please contact support for a list of supported methods.</p>
+: Describe service level for shipping provider. Please contact support for a list of supported methods.</p>
 
 <p><strong>tracking_number (optional)</strong>
-:   The tracking number associated with a provided shipment label. Used for customer service. If provided, the ship method is required.</p>
+: The tracking number associated with a provided shipment label. Used for customer service. If provided, the ship method is required.</p>
 
 <p><strong>shipping_label_url (optional)</strong>
-:   The url of the pre-paid shipping label for this order.</p>
+: The url of a pre-paid shipping label for this order. Dream Junction will request the label and prepare it for our shipping system at the time of order print completion. Accepted formats include: PNG and PDF.</p>
 
 <p><strong>ship_to</strong>
-:   Provide as much information as possible. Address info is verified at time of packaging an order. Missing data can delay an order from entering production.</p>
+: Provide as much information as possible. Address information is verified at the time of order print completion. Missing data can delay an order from entering production.</p>
 
 <ul>
 <li>first_name</li>
@@ -439,7 +466,7 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 </ul>
 
 <p><strong>ship_from (optional)</strong>
-:   Company name or first and last name are required. Address fields are required to override account level ship from address for shipping label return addresses.</p>
+: Company name or first and last name are required. Address fields are required to override account level ship from address for shipping label return addresses.</p>
 
 <ul>
 <li>first_name</li>
@@ -454,42 +481,50 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 </ul>
 
 <p><strong>order_notes (optional)</strong>
-:   Any additional information for this order</p>
+: Any additional information for this order.</p>
 
 <p><strong>production_priority</strong>
-:   normal (default) or express</p>
+: normal (default) or rush. Rush orders will incur an additional fee to expedite the production of the order.</p>
 
 <p><strong>items</strong>
-:   Array of one or more printable items.</p>
+: Array of one or more printable items.</p>
 
 <ul>
 <li>customer_sku (optional): For your internal tracking. Can be the item purchase order or a descriptive name for the item. This will be returned in order status notifications for each item.</li>
 <li>sku: Internal Dream Junction SKU. Optional if attributes below are provided.</li>
-<li>name (optional): Name of the product, usually to describe the design</li>
-<li>description (optional): Description of the product, usually used to describe the garment</li>
+<li>name (optional): Name of the product or to describe the design.</li>
+<li>description (optional): Description of the product, used to describe the garment.</li>
 <li>quantity: Integer of 1 or greater.</li>
-<li>attributes: If the sku is not provided, the attributes must be provided. Not all combinations are available. Refer to a Dream Junction SKUs list.
+<li>attributes: If the sku is not provided, the attributes must be provided. Not all combinations are available. Refer to the Dream Junction SKUs list.
 
 <ul>
-<li>style: Short identifier matching Dream Junction garment style</li>
-<li>color: Short identifier matching Dream Junction colors by style</li>
-<li>size: Short identifier matching Dream Junction size by style</li>
+<li>style: Short identifier matching Dream Junction garment style.</li>
+<li>color: Short identifier matching Dream Junction colors by style.</li>
+<li>size: Short identifier matching Dream Junction size by style.</li>
 </ul></li>
 </ul>
 
 <p><strong>designs</strong>
-:   Array of one or more designs to apply to an item.</p>
+: Array of one or more designs to apply to an item. Dream Junction attempts to store and reuse artwork if it currently exists to avoid duplication and allow for artwork updates as needed. If you prefer that each artwork file or design be downloaded at time of order please let your Dream Junction integration specialist know.</p>
 
 <ul>
-<li>placement: Unspecified is default and will result in a front print. Possible values currently: &#39;Front&#39;, &#39;Back&#39;</li>
+<li>placement: Unspecified is default and will result in a front center print. Print locations are approximate and any placement within the artwork can affect the position. Possible values include:<br>
+
+<ul>
+<li>&#39;Front Center&#39; - Artwork will be printed on the front and center of the garment.</li>
+<li>&#39;Back Center&#39; - Artwork will be printed on the back and center of the garment.</li>
+<li>&#39;Front Left Chest&#39; - Artwork will be printed on the front and left chest area of the garment.</li>
+<li>&#39;Front Right Chest&#39; - Artwork will be printed on the front and right chest area of the garment.</li>
+<li>&#39;Neck&#39; - Artwork will be printed on the interior neck area of the garment.</li>
+</ul></li>
 <li>art_file: Filename for print ready art. If not available locally, we will retrieve asynchronously from the art_url and name the retrieved file with this art_file name.</li>
-<li>art_url: Location of print ready art. If art_file is not available locally, we will retrieve it asynchronously from this url.</li>
+<li>art_url: URL of print ready art. If art_file is not available locally, we will retrieve it asynchronously from this url. Supported formats include: PNG, TIFF, and JPG. Note: JPG file do not include transparency and can result in a large ink print area.</li>
 <li>thumbnail_url: Location of thumbnail. If not available locally, we will retrieve it asynchronously from this url.</li>
-<li>underbase: true or false. Indicate whether a white underbase layer should be applied to the print.</li>
+<li>underbase: true (default) or false. Indicate whether a white underbase layer should be applied to the print.</li>
 </ul>
 
 <p><strong>inserts (optional)</strong>
-:   Array of one or more inserts to apply to an order.</p>
+: Array of one or more inserts to apply to an order. Inserts must be prearranged with the Dream Junction as they are physical goods and may incur an additional charge per insert.</p>
 
 <ul>
 <li>identifier: Unique identifier string for an insert. If matched to an existing identifier in your account, then the insert graphic will be reused.</li>
@@ -500,82 +535,81 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 <p>Status Code 200 OK</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order &lt;order_id&gt; successfully created."</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;order_id&gt;</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order &lt;order_id&gt; successfully created."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;order_id&gt;</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Status Code 200 OK</p>
 <h2 id='failed-new-order-response-examples'>Failed New Order Response Examples</h2>
-<blockquote>
-<p>duplicate order
-Status Code 422 Unprocessable Entity</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unprocessable_entity"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed: Purchase order has already been taken"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;order_id&gt;</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>missing items
-Status Code 422 Unprocessable Entity</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unprocessable_entity"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order is missing one or more items."</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>missing skus
-Status Code 422 Unprocessable Entity</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unprocessable_entity"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU cannot be found to process this item. SKU: sku_name"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>missing designs
-Status Code 422 Unprocessable Entity</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unprocessable_entity"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item is missing one or more designs"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre>
 <p>Status Code 422 Unprocessable Entity</p>
-<h1 id='order-status'>Order Status</h1>
+
+<blockquote>
+<p>Duplicate Order
+Status Code 422 Unprocessable Entity</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unprocessable_entity"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed: Purchase order has already been taken"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;order_id&gt;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Missing Items
+Status Code 422 Unprocessable Entity</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unprocessable_entity"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order is missing one or more items."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Missing Skus
+Status Code 422 Unprocessable Entity</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unprocessable_entity"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU cannot be found to process this item. SKU: &lt;sku_name&gt;"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Missing Designs
+Status Code 422 Unprocessable Entity</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unprocessable_entity"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item is missing one or more designs"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='order-status'>Order Status</h1>
 <p>Request status of a single order</p>
-<h3 id='order-status-arguments'>Order Status Arguments</h3>
+<h2 id='order-status-arguments'>Order Status Arguments</h2>
 <p><strong>id</strong>
-:   Internal order id used by Dream Junction.</p>
+: Internal order id used by Dream Junction.</p>
 
 <p><strong>purchase_order</strong>
-:   Customer purchase order provided with the order.</p>
+: Customer purchase order provided with the order.</p>
 <h2 id='order-status-request-by-order-id'>Order Status Request by Order ID</h2>
-<p><code>GET http://api.thedreamjunction.com/api/v3/orders/&lt;order_id&gt;</code><br>
-    <code>Content-Type: application/json</code><br>
-    <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
-<h3 id='example-request-by-order-id'>Example Request by Order ID</h3>
-<p><code>GET http://api.thedreamjunction.com/api/v3/orders/16724</code><br>
-    <code>Content-Type: application/json</code><br>
-    <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<p><code>GET https://api.thedreamjunction.com/api/v3/orders/&lt;order_id&gt;</code><br>
+  <code>Content-Type: application/json</code><br>
+  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<h2 id='example-request-by-order-id'>Example Request by Order ID</h2>
+<p><code>GET https://api.thedreamjunction.com/api/v3/orders/16724</code><br>
+  <code>Content-Type: application/json</code><br>
+  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
 <h2 id='order-status-request-by-purchase-order'>Order Status Request by Purchase Order</h2>
-<p><code>GET http://api.thedreamjunction.com/api/v3/orders/show?purchase_order=&lt;purchase_order&gt;</code><br>
-    <code>Content-Type: application/json</code><br>
-    <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
-<h3 id='example-request-by-purchase-order'>Example Request by Purchase Order</h3>
-<p><code>GET http://api.thedreamjunction.com/api/v3/orders/show?purchase_order=5697626056</code><br>
-    <code>Content-Type: application/json</code><br>
-    <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<p><code>GET https://api.thedreamjunction.com/api/v3/orders/show?purchase_order=&lt;purchase_order&gt;</code><br>
+  <code>Content-Type: application/json</code><br>
+  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<h2 id='example-request-by-purchase-order'>Example Request by Purchase Order</h2>
+<p><code>GET https://api.thedreamjunction.com/api/v3/orders/show?purchase_order=5697626056</code><br>
+  <code>Content-Type: application/json</code><br>
+  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
 <h2 id='order-status-example-response'>Order Status Example Response</h2><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16724</span><span class="p">,</span><span class="w">
       </span><span class="s2">"purchase_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5697626056"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-06-30T23:56:24.691 -07:00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"shipped_at"</span><span class="p">:</span><span class="w">  </span><span class="s2">"2014-07-01T12:21:24.691 -07:00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shipped"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-30T23:56:24.691 -07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shipped_at"</span><span class="p">:</span><span class="w">  </span><span class="s2">"2018-07-01T12:21:24.691 -07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"client_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.25</span><span class="p">,</span><span class="w">
       </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -583,51 +617,70 @@ Status Code 422 Unprocessable Entity</p>
           </span><span class="s2">"customer_sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1415956-15"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"sku_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">202</span><span class="p">,</span><span class="w">
           </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T-Shirt"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"workflow_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"packaged"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"workflow_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"shipments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"shipping_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smartmail Expedited"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"tracking_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9374869903500930473876"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"search_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://webtrack.dhlglobalmail.com/?trackingnumber=9374869903500930473876"</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"shipping_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smartmail Expedited"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tracking_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9374869903500930473876"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"search_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://webtrack.dhlglobalmail.com/?trackingnumber=9374869903500930473876"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>id</strong>
-:   Internal order id</p>
+: Internal order id</p>
 
 <p><strong>purchase_order</strong>
-:   Customer purchase order</p>
+: Customer purchase order</p>
 
 <p><strong>shipped_at</strong>
-:   Present if the order has shipped</p>
+: Present if the order has shipped</p>
 
 <p><strong>status</strong>
-:   Order status can be received, open, canceled, packaged, and shipped</p>
+: Order status can be:</p>
+
+<ul>
+<li>received - Order has been received and is enqueued.</li>
+<li>production_hold - Order production location is being evaluated for optimal production.</li>
+<li>intake_hold - Order is being reviewed for address, artwork and inventory availability.</li>
+<li>open - The order is in production.</li>
+<li>completed - All items in the order have been printed.</li>
+<li>shipped - The order has been packaged and shipped.</li>
+<li>canceled - The order was canceled on request.</li>
+</ul>
 
 <p><strong>client_amount</strong>
-:   Order cost expected to be billed to client. Note: This can change as the order changes within our system and does not typically include the shipping carrier charges.</p>
+: Order cost expected to be billed to client. Note: This can change as the order changes within our system and does not typically include the shipping carrier charges.</p>
 
 <p><strong>items</strong></p>
 
 <ul>
-<li>id:   Internal item id</li>
+<li>id: Internal item id</li>
 <li>customer_sku: Customer-provided SKU</li>
-<li>sku_id:   Internal sku</li>
-<li>workflow_state:   Item workflow state can be open, packaged, or canceled</li>
-</ul>
-
-<p><strong>shipments</strong>  </p>
+<li>sku_id: Internal sku</li>
+<li>workflow_state: Item workflow state can be:
 
 <ul>
-<li>shipping_method:  Shipping method returned by the shipping provider</li>
-<li>tracking_number: Tracking number returned by the shipping provider for package</li>
-<li>search_link:  Link to shipping carrier website for tracking information and progress.</li>
+<li>production_hold - The item production location is being evaluated for optimal production.</li>
+<li>intake_hold - Item order is being reviewed for address, artwork and inventory availability.</li>
+<li>open - The item is in production.</li>
+<li>completed - The item has been printed</li>
+<li>shipped - The item has been shipped.</li>
+<li>canceled - The item was canceled on request.</li>
+</ul></li>
 </ul>
 
-<p><strong>address</strong>  :  Address fields included with the original order request or updated if requested.</p>
+<p><strong>shipments</strong></p>
+
+<ul>
+<li>shipping_method: Shipping method returned by the shipping provider.</li>
+<li>tracking_number: Tracking number returned by the shipping provider for the package.</li>
+<li>search_link: Link to shipping carrier website for tracking information and progress.</li>
+</ul>
+
+<p><strong>address</strong>  : Address fields included with the original order request or updated if requested.</p>
 
 <ul>
 <li>ship_to_first_name</li>
@@ -651,42 +704,42 @@ Status Code 422 Unprocessable Entity</p>
 </span></code></pre><h1 id='multiple-order-status'>Multiple Order Status</h1>
 <p>Request status of 100 most recent orders, with pagination.</p>
 <h2 id='multiple-order-status-request'>Multiple Order Status Request</h2>
-<p><code>GET http://api.thedreamjunction.com/api/v3/orders</code><br>
-    <code>Content-Type: application/json</code><br>
-    <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
-<h3 id='example-request'>Example Request</h3>
-<p><code>GET http://api.thedreamjunction.com/api/v3/orders</code><br>
-    <code>Content-Type: application/json</code><br>
-    <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
-<h2 id='multiple-order-status-response'>Multiple Order Status Response</h2><pre class="highlight plaintext"><code>    {
-      "orders": [
-        {
-          "order": {
-            "id": 999,
-            "purchase_order": "123456789",
-            "created_at": "2014-06-30T23:56:24.691-07:00",
-            "status": "open",
-            "client_amount": 5.25,
-            "items": [
-              {
-                "id": 33448,
-                "customer_sku": "1415956-15",
-                "sku_id": 202,
-                "description": "T-Shirt",
-                "workflow_state": "open",
-              }
-            ]
-          }
-        },
-        {
-          "order": {
-            "id": 998,
-            "purchase_order": "987654321",
-            "created_at": "2014-06-30T23:00:25.492-07:00",
-            "status": "open",
-        ...
-    }
-</code></pre>
+<p><code>GET https://api.thedreamjunction.com/api/v3/orders</code><br>
+<code>Content-Type: application/json</code><br>
+<code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<h2 id='example-request'>Example Request</h2>
+<p><code>GET https://api.thedreamjunction.com/api/v3/orders</code><br>
+<code>Content-Type: application/json</code><br>
+<code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<h2 id='multiple-order-status-response'>Multiple Order Status Response</h2><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"purchase_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-30T23:56:24.691-07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"client_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.25</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33448</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"customer_sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1415956-15"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sku_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">202</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T-Shirt"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflow_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">998</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"purchase_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654321"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-30T23:00:25.492-07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <aside class="notice">
 For element details, please refer to the Order Status request above.
 </aside>
@@ -694,50 +747,65 @@ For element details, please refer to the Order Status request above.
 <p>To retrieve a list of orders, optional url parameters listed below can be used in conjunction to retrieve a filtered list of orders:</p>
 
 <p><strong>order_status</strong>
-:   The status of the orders to retrieve. Order status can be received, open, packaged, shipped and canceled.</p>
+: The status of the orders to retrieve. Order status can be received, open, packaged, shipped and canceled.</p>
 
 <p><strong>created_at_min</strong>
-:   Show orders created after date (format: 02-25-2015).</p>
+: Show orders created after date (format: 02-25-2018).</p>
 
 <p><strong>created_at_max</strong>
-:   Show orders created before date (format: 02-26-2015).</p>
+: Show orders created before date (format: 02-26-2018).</p>
 
 <p><strong>limit</strong>
-:   Amount of results. Default is 100. Maximum is 200.</p>
+: Amount of results. Default is 100. Maximum is 200.</p>
 
 <p><strong>page</strong>
-:   The page number to retrieve the next list orders based on specified parameters.</p>
+: The page number to retrieve the next list orders based on specified parameters.</p>
 <h3 id='request'>Request</h3>
-<p><code>GET http://api.thedreamjunction.com/api/v3/orders?order_status=&lt;order_status&gt;&amp;limit=&lt;limit_number&gt;</code><br>
-     <code>Content-Type: application/json</code><br>
-     <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<p><code>GET https://api.thedreamjunction.com/api/v3/orders?order_status=&lt;order_status&gt;&amp;limit=&lt;limit_number&gt;</code><br>
+<code>Content-Type: application/json</code><br>
+<code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
 <h3 id='example-request-2'>Example Request</h3>
-<p><code>GET http://api.thedreamjunction.com/api/v3/orders?order_status=shipped&amp;limit=50</code><br>
-     <code>Content-Type: application/json</code><br>
-     <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<p><code>GET https://api.thedreamjunction.com/api/v3/orders?order_status=shipped&amp;limit=50</code><br>
+<code>Content-Type: application/json</code><br>
+<code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
 <h2 id='order-notifications'>Order Notifications</h2>
-<p><aside class="notice">
-   If you would prefer that the Dream Junction system send order notifications instead of polling for order status please contact your Dream Junction representative. We can POST order notifications as the order status updates through to shipped.
-   </aside></p>
+<aside class="notice">
+If you would prefer that the Dream Junction system send order notifications instead of polling for order status please contact your Dream Junction representative. We can POST order notifications as the order status updates through to shipped.
+</aside>
 <h1 id='stock-check'>Stock Check</h1>
-<p>Request the current quantity in stock by SKU.</p>
+<p>Request the current inventory status by SKU identifier.</p>
 <h2 id='stock-check-request'>Stock Check Request</h2>
-<p><code>GET http://api.thedreamjunction.com/api/v3/stocks/sku_identifier</code><br>
-     <code>Content-Type: application/json</code><br>
-     <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
-<h3 id='stock-check-example-request'>Stock Check Example Request</h3>
-<p><code>GET http://api.thedreamjunction.com/api/v3/stocks/2001_BLACK_S</code><br>
-     <code>Content-Type: application/json</code><br>
-     <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
-<h2 id='stock-check-example-response'>Stock Check Example Response</h2><pre class="highlight json tab-json"><code><span class="w">     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GI18000_WHITE_M"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"on_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"eta"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"2016-01-16 00:00:00 -0800"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+<p><code>GET https://api.thedreamjunction.com/api/v3/stocks/&lt;sku_identifier&gt;</code><br>
+  <code>Content-Type: application/json</code><br>
+  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<h2 id='stock-check-example-request'>Stock Check Example Request</h2>
+<p><code>GET https://api.thedreamjunction.com/api/v3/stocks/2001_BLACK_S</code><br>
+  <code>Content-Type: application/json</code><br>
+  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<h2 id='stock-check-example-response'>Stock Check Example Response</h2><h3 id='repsonse-parameters'>Repsonse Parameters</h3>
+<p><strong>id</strong>
+: The id of the sku queried.</p>
+
+<p><strong>quantity</strong>
+: The quantity of stock on hand.</p>
+
+<p><strong>identifier</strong>
+: The string identifier of the sku.</p>
+
+<p><strong>on_order</strong>
+: The quantity of stock on order and arriving from a garment provider.</p>
+
+<p><strong>eta</strong>
+: An array indicating the delivery dates for replenishment of the sku inventory.</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GI18000_WHITE_M"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"on_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"eta"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"2018-01-16 00:00:00 -0800"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre><h1 id='errors'>Errors</h1>
 <table><thead>
 <tr>
@@ -747,7 +815,7 @@ For element details, please refer to the Order Status request above.
 </thead><tbody>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Please check the Auth Token is valid and present in the HTTP header</td>
+<td>Unauthorized -- Please check the Auth Token is valid and present in the HTTP header.</td>
 </tr>
 <tr>
 <td>404</td>
@@ -756,6 +824,10 @@ For element details, please refer to the Order Status request above.
 <tr>
 <td>422</td>
 <td>Unprocessable Entity</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Bad Request - Please check the JSON validity of the request here: <a href="https://jsonlint.com/">https://jsonlint.com/</a>.</td>
 </tr>
 </tbody></table>
 

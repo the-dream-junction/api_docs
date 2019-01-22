@@ -40,7 +40,7 @@ Request the current inventory status by SKU identifier.
   "identifier": "GI18000_WHITE_M",
   "on_order": 12,
   "eta": [
-    "2016-01-16 00:00:00 -0800"
+    "2018-01-16 00:00:00 -0800"
   ]
 }
 ```

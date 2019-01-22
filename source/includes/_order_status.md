@@ -12,25 +12,25 @@ Request status of a single order
 
 ## Order Status Request by Order ID
 
-  `GET http://api.thedreamjunction.com/api/v3/orders/<order_id>`  
+  `GET https://api.thedreamjunction.com/api/v3/orders/<order_id>`  
   `Content-Type: application/json`  
   `Authorization: Token token=<16-24 character API key>`
 
 ## Example Request by Order ID
 
-  `GET http://api.thedreamjunction.com/api/v3/orders/16724`  
+  `GET https://api.thedreamjunction.com/api/v3/orders/16724`  
   `Content-Type: application/json`  
   `Authorization: Token token=<16-24 character API key>`
 
 ## Order Status Request by Purchase Order
 
-  `GET http://api.thedreamjunction.com/api/v3/orders/show?purchase_order=<purchase_order>`  
+  `GET https://api.thedreamjunction.com/api/v3/orders/show?purchase_order=<purchase_order>`  
   `Content-Type: application/json`  
   `Authorization: Token token=<16-24 character API key>`
 
 ## Example Request by Purchase Order
 
-  `GET http://api.thedreamjunction.com/api/v3/orders/show?purchase_order=5697626056`  
+  `GET https://api.thedreamjunction.com/api/v3/orders/show?purchase_order=5697626056`  
   `Content-Type: application/json`  
   `Authorization: Token token=<16-24 character API key>`
 
@@ -40,9 +40,9 @@ Request status of a single order
     {
       "id": 16724,
       "purchase_order": "5697626056",
-      "created_at": "2014-06-30T23:56:24.691 -07:00",
-      "shipped_at":  "2014-07-01T12:21:24.691 -07:00",
-      "status": "shipped",
+      "created_at": "2018-06-30T23:56:24.691 -07:00",
+      "shipped_at":  "2018-07-01T12:21:24.691 -07:00",
+      "status": "completed",
       "client_amount": 5.25,
       "items": [
         {
@@ -50,14 +50,14 @@ Request status of a single order
           "customer_sku": "1415956-15",
           "sku_id": 202,
           "description": "T-Shirt",
-          "workflow_state": "packaged",
+          "workflow_state": "completed",
         }
       ],
       "shipments": [
       {
         "shipping_method": "Smartmail Expedited",
         "tracking_number": "9374869903500930473876",
-        "search_link": "http://webtrack.dhlglobalmail.com/?trackingnumber=9374869903500930473876"
+        "search_link": "https://webtrack.dhlglobalmail.com/?trackingnumber=9374869903500930473876"
         }
       ]
     }
