@@ -47,7 +47,9 @@ Submit a new order request.
     "country": "US"
   },
   "order_notes": "Beware the ferocious guard cat.",
-  "shipping_label_url": "https://clientdomain.com/services/receipt?id=1729598549",
+  "shipping_label_url": "https://clientdomain.com/shipments/shipping-label.pdf",
+  "packing_slip_url": "https://clientdomain.com/shipments/packing-slip.pdf",
+  "addtl_ship_docs_url": "https://clientdomain.com/shipments/customs-declaration.pdf",
   "production_priority": "normal",
   "items": [
     {
@@ -121,7 +123,13 @@ OSM is our default domestic service provider. DHL is our default international s
 : The tracking number associated with a provided shipment label. Used for customer service. If provided, the ship method is required.
 
 **shipping_label_url (optional)**
-: The url of a pre-paid shipping label for this order. Dream Junction will request the label and prepare it for our shipping system at the time of order print completion. Accepted formats include: PNG and PDF.
+: The url of a pre-paid shipping label for this order. Dream Junction will request the label and prepare it for our shipping system at the time of order print completion. Accepted formats include: JPG, GIF, PNG and PDF.
+
+**packing_slip_url (optional)**
+: The url of a packing slip document. Dream Junction will request the document and prepare it for our shipping system at the time of order print completion. Accepted formats include: JPG, GIF, PNG and PDF. If needed please contact your Dream Junction account manager as an additional cost may incur.
+
+**addtl_ship_docs_url (optional)**
+: The url of a additional shipping documents for this order. Dream Junction will request the document and prepare it for our shipping system at the time of order print completion. Accepted formats include: JPG, GIF, PNG and PDF. If needed please contact your Dream Junction account manager as an additional cost may incur.
 
 **ship_to**
 : Provide as much information as possible. Address information is verified at the time of order print completion. Missing data can delay an order from entering production.
@@ -183,6 +191,13 @@ OSM is our default domestic service provider. DHL is our default international s
 - art_url: URL of print ready art. If art_file is not available locally, we will retrieve it asynchronously from this url. Supported formats include: PNG, TIFF, and JPG. Note: JPG file do not include transparency and can result in a large ink print area.
 - thumbnail_url: Location of thumbnail. If not available locally, we will retrieve it asynchronously from this url.
 - underbase: true (default) or false. Indicate whether a white underbase layer should be applied to the print.
+
+**custom_tags (optional)**
+: Array of one or more custom application tags to apply to an item in an order. Custom tags must be prearranged with the Dream Junction as they are physical goods and may incur an additional charge per item.
+
+- tag_code: Unique identifier string for a custom tag. If matched to an existing identifier in your account, then the custom tag settings will be reused.
+- tag_type: Type of custom tag to notify team of application type ie. 'hang tag', 'sticker'
+- image: Location of preview image of the custom tag. We will retrieve the image asynchronously from this url.
 
 **inserts (optional)**
 : Array of one or more inserts to apply to an order. Inserts must be prearranged with the Dream Junction as they are physical goods and may incur an additional charge per insert.

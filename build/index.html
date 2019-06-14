@@ -371,7 +371,9 @@ You must replace <code>key</code> with your personal 16-24 character API key.
     </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"order_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beware the ferocious guard cat."</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"shipping_label_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://clientdomain.com/services/receipt?id=1729598549"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shipping_label_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://clientdomain.com/shipments/shipping-label.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"packing_slip_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://clientdomain.com/shipments/packing-slip.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addtl_ship_docs_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://clientdomain.com/shipments/customs-declaration.pdf"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"production_priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -446,7 +448,13 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 : The tracking number associated with a provided shipment label. Used for customer service. If provided, the ship method is required.</p>
 
 <p><strong>shipping_label_url (optional)</strong>
-: The url of a pre-paid shipping label for this order. Dream Junction will request the label and prepare it for our shipping system at the time of order print completion. Accepted formats include: PNG and PDF.</p>
+: The url of a pre-paid shipping label for this order. Dream Junction will request the label and prepare it for our shipping system at the time of order print completion. Accepted formats include: JPG, GIF, PNG and PDF.</p>
+
+<p><strong>packing_slip_url (optional)</strong>
+: The url of a packing slip document. Dream Junction will request the document and prepare it for our shipping system at the time of order print completion. Accepted formats include: JPG, GIF, PNG and PDF. If needed please contact your Dream Junction account manager as an additional cost may incur.</p>
+
+<p><strong>addtl_ship_docs_url (optional)</strong>
+: The url of a additional shipping documents for this order. Dream Junction will request the document and prepare it for our shipping system at the time of order print completion. Accepted formats include: JPG, GIF, PNG and PDF. If needed please contact your Dream Junction account manager as an additional cost may incur.</p>
 
 <p><strong>ship_to</strong>
 : Provide as much information as possible. Address information is verified at the time of order print completion. Missing data can delay an order from entering production.</p>
@@ -521,6 +529,15 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 <li>art_url: URL of print ready art. If art_file is not available locally, we will retrieve it asynchronously from this url. Supported formats include: PNG, TIFF, and JPG. Note: JPG file do not include transparency and can result in a large ink print area.</li>
 <li>thumbnail_url: Location of thumbnail. If not available locally, we will retrieve it asynchronously from this url.</li>
 <li>underbase: true (default) or false. Indicate whether a white underbase layer should be applied to the print.</li>
+</ul>
+
+<p><strong>custom_tags (optional)</strong>
+: Array of one or more custom application tags to apply to an item in an order. Custom tags must be prearranged with the Dream Junction as they are physical goods and may incur an additional charge per item.</p>
+
+<ul>
+<li>tag_code: Unique identifier string for a custom tag. If matched to an existing identifier in your account, then the custom tag settings will be reused.</li>
+<li>tag_type: Type of custom tag to notify team of application type ie. &#39;hang tag&#39;, &#39;sticker&#39;</li>
+<li>image: Location of preview image of the custom tag. We will retrieve the image asynchronously from this url.</li>
 </ul>
 
 <p><strong>inserts (optional)</strong>
@@ -782,30 +799,57 @@ If you would prefer that the Dream Junction system send order notifications inst
 <p><code>GET https://api.thedreamjunction.com/api/v3/stocks/2001_BLACK_S</code><br>
   <code>Content-Type: application/json</code><br>
   <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
-<h2 id='stock-check-example-response'>Stock Check Example Response</h2><h3 id='repsonse-parameters'>Repsonse Parameters</h3>
+<h2 id='stock-check-example-response'>Stock Check Example Response</h2><h3 id='response-parameters'>Response Parameters</h3>
 <p><strong>id</strong>
 : The id of the sku queried.</p>
+
+<p><strong>sku_identifier</strong>
+: The string identifier of the sku.</p>
+
+<p><strong>sku_gtin</strong>
+: The GTIN (Global Trade Item Number) of the sku.</p>
+
+<p><strong>location_id</strong>
+: The id of the stock warehouse location.</p>
+
+<p><strong>location_name</strong>
+: The name of the stock warehouse location.</p>
 
 <p><strong>quantity</strong>
 : The quantity of stock on hand.</p>
 
-<p><strong>identifier</strong>
-: The string identifier of the sku.</p>
-
-<p><strong>on_order</strong>
+<p><strong>amt_on_order</strong>
 : The quantity of stock on order and arriving from a garment provider.</p>
 
-<p><strong>eta</strong>
+<p><strong>expected_etas</strong>
 : An array indicating the delivery dates for replenishment of the sku inventory.</p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GI18000_WHITE_M"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"on_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"eta"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"2018-01-16 00:00:00 -0800"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2174</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000_BLACK_L"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku_gtin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00821780001020"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Santa Ana"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1325</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amt_on_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">216</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expected_etas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"2019-06-11T15:32:23.000-07:00"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20658</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000_BLACK_L"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku_gtin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00821780001020"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kentucky"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">967</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amt_on_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1584</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expected_etas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"2019-06-07T00:00:00.000-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"2019-06-11T15:32:13.000-07:00"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre><h1 id='errors'>Errors</h1>
 <table><thead>
 <tr>
