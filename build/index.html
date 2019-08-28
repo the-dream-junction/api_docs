@@ -343,6 +343,7 @@ You must replace <code>key</code> with your personal 16-24 character API key.
   </span><span class="s2">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"account_zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92704"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"purchase_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1729598549"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1729598549-1"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"garments_provided"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"ship_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DHL"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"ship_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ground"</span><span class="p">,</span><span class="w">
@@ -378,6 +379,7 @@ You must replace <code>key</code> with your personal 16-24 character API key.
   </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"customer_sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"574247-15"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"item_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"574247-15"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2001_ASPHALT_L"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Breathe!"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T-shirt - Womens Fitted Tee White LARGE"</span><span class="p">,</span><span class="w">
@@ -403,7 +405,11 @@ You must replace <code>key</code> with your personal 16-24 character API key.
           </span><span class="s2">"art_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"art.tif"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"art_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://clientdomain.com/wp-content/assets/art.tif"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"thumbnail_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://clientdomain.com/wp-content/assets/thumbnail.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"underbase"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+          </span><span class="s2">"underbase"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"x_offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"y_offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mf">17.0</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -491,6 +497,9 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 <p><strong>order_notes (optional)</strong>
 : Any additional information for this order.</p>
 
+<p><strong>order_reference_number (optional)</strong>
+: Internal reference number or string.</p>
+
 <p><strong>production_priority</strong>
 : normal (default) or rush. Rush orders will incur an additional fee to expedite the production of the order.</p>
 
@@ -499,6 +508,7 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 
 <ul>
 <li>customer_sku (optional): For your internal tracking. Can be the item purchase order or a descriptive name for the item. This will be returned in order status notifications for each item.</li>
+<li>item_reference_number (optional): For your internal tracking. Can be the item purchase order or a descriptive name for the item.</li>
 <li>sku: Internal Dream Junction SKU. Optional if attributes below are provided.</li>
 <li>name (optional): Name of the product or to describe the design.</li>
 <li>description (optional): Description of the product, used to describe the garment.</li>
@@ -529,6 +539,10 @@ You must replace <code>key</code> with your personal 16-24 character API key.
 <li>art_url: URL of print ready art. If art_file is not available locally, we will retrieve it asynchronously from this url. Supported formats include: PNG, TIFF, and JPG. Note: JPG file do not include transparency and can result in a large ink print area.</li>
 <li>thumbnail_url: Location of thumbnail. If not available locally, we will retrieve it asynchronously from this url.</li>
 <li>underbase: true (default) or false. Indicate whether a white underbase layer should be applied to the print.</li>
+<li>x_offset: integer in millimeters (mm) to place the artwork horizontally from the origin point of the printer.</li>
+<li>y_offset: integer in millimeters (mm) to place the artwork vertically from the origin point of the printer.</li>
+<li>width: floating number width in inches (in) to print the artwork.</li>
+<li>height: floating number height in inches (in) to print the artwork.</li>
 </ul>
 
 <p><strong>custom_tags (optional)</strong>

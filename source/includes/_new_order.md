@@ -19,6 +19,7 @@ Submit a new order request.
   "account_id": 1,
   "account_zip": "92704",
   "purchase_order": "1729598549",
+  "order_reference_number": "1729598549-1",
   "garments_provided": false,
   "ship_provider": "DHL",
   "ship_method": "Ground",
@@ -54,6 +55,7 @@ Submit a new order request.
   "items": [
     {
       "customer_sku": "574247-15",
+      "item_reference_number": "574247-15",
       "sku": "2001_ASPHALT_L",
       "name": "Breathe!",
       "description": "T-shirt - Womens Fitted Tee White LARGE",
@@ -79,7 +81,11 @@ Submit a new order request.
           "art_file": "art.tif",
           "art_url": "https://clientdomain.com/wp-content/assets/art.tif",
           "thumbnail_url": "https://clientdomain.com/wp-content/assets/thumbnail.jpg",
-          "underbase": true
+          "underbase": true,
+          "x_offset": 20,
+          "y_offset": 10,
+          "width": 14.0,
+          "height": 17.0
         }
       ]
     }
@@ -162,6 +168,9 @@ OSM is our default domestic service provider. DHL is our default international s
 **order_notes (optional)**
 : Any additional information for this order.
 
+**order_reference_number (optional)**
+: Internal reference number or string.
+
 **production_priority**
 : normal (default) or rush. Rush orders will incur an additional fee to expedite the production of the order.
 
@@ -169,6 +178,7 @@ OSM is our default domestic service provider. DHL is our default international s
 : Array of one or more printable items.
 
 - customer_sku (optional): For your internal tracking. Can be the item purchase order or a descriptive name for the item. This will be returned in order status notifications for each item.
+- item_reference_number (optional): For your internal tracking. Can be the item purchase order or a descriptive name for the item.
 - sku: Internal Dream Junction SKU. Optional if attributes below are provided.
 - name (optional): Name of the product or to describe the design.
 - description (optional): Description of the product, used to describe the garment.
@@ -191,6 +201,10 @@ OSM is our default domestic service provider. DHL is our default international s
 - art_url: URL of print ready art. If art_file is not available locally, we will retrieve it asynchronously from this url. Supported formats include: PNG, TIFF, and JPG. Note: JPG file do not include transparency and can result in a large ink print area.
 - thumbnail_url: Location of thumbnail. If not available locally, we will retrieve it asynchronously from this url.
 - underbase: true (default) or false. Indicate whether a white underbase layer should be applied to the print.
+- x_offset: integer in millimeters (mm) to place the artwork horizontally from the origin point of the printer.
+- y_offset: integer in millimeters (mm) to place the artwork vertically from the origin point of the printer.
+- width: floating number width in inches (in) to print the artwork.
+- height: floating number height in inches (in) to print the artwork.
 
 **custom_tags (optional)**
 : Array of one or more custom application tags to apply to an item in an order. Custom tags must be prearranged with the Dream Junction as they are physical goods and may incur an additional charge per item.
