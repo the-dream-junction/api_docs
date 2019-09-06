@@ -291,6 +291,49 @@
               </ul>
           </li>
           <li>
+            <a href="#update-order" class="toc-h1 toc-link" data-title="update-order">Update Order</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#update-order-request" class="toc-h2 toc-link" data-title="update-order-request">Update Order Request</a>
+                  </li>
+                  <li>
+                    <a href="#update-order-example-request" class="toc-h2 toc-link" data-title="update-order-example-request">Update Order Example Request</a>
+                  </li>
+                  <li>
+                    <a href="#update-order-parameters" class="toc-h2 toc-link" data-title="update-order-parameters">Update Order Parameters</a>
+                  </li>
+                  <li>
+                    <a href="#update-order-example-response" class="toc-h2 toc-link" data-title="update-order-example-response">Update Order Example Response</a>
+                  </li>
+                  <li>
+                    <a href="#success" class="toc-h2 toc-link" data-title="success">Success</a>
+                  </li>
+                  <li>
+                    <a href="#failure" class="toc-h2 toc-link" data-title="failure">Failure</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#cancel-order" class="toc-h1 toc-link" data-title="cancel-order">Cancel Order</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#order-cancel-request" class="toc-h2 toc-link" data-title="order-cancel-request">Order Cancel Request</a>
+                  </li>
+                  <li>
+                    <a href="#order-cancel-example-request" class="toc-h2 toc-link" data-title="order-cancel-example-request">Order Cancel Example Request</a>
+                  </li>
+                  <li>
+                    <a href="#order-cancel-example-response" class="toc-h2 toc-link" data-title="order-cancel-example-response">Order Cancel Example Response</a>
+                  </li>
+                  <li>
+                    <a href="#success" class="toc-h2 toc-link" data-title="success">Success</a>
+                  </li>
+                  <li>
+                    <a href="#failure" class="toc-h2 toc-link" data-title="failure">Failure</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#stock-check" class="toc-h1 toc-link" data-title="stock-check">Stock Check</a>
               <ul class="toc-list-h2">
                   <li>
@@ -803,7 +846,91 @@ For element details, please refer to the Order Status request above.
 <aside class="notice">
 If you would prefer that the Dream Junction system send order notifications instead of polling for order status please contact your Dream Junction representative. We can POST order notifications as the order status updates through to shipped.
 </aside>
-<h1 id='stock-check'>Stock Check</h1>
+<h1 id='update-order'>Update Order</h1>
+<p>Submit an order change request for the shipping carrier, method, or address.</p>
+<h2 id='update-order-request'>Update Order Request</h2>
+<p><code>PUT https://api.thedreamjunction.com/api/v3/orders/&lt;order_id&gt;</code><br>
+  <code>Content-Type: application/json</code><br>
+  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<h2 id='update-order-example-request'>Update Order Example Request</h2>
+<p><code>PUT https://api.thedreamjunction.com/api/v3/orders/7048816</code><br>
+  <code>Content-Type: application/json</code><br>
+  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<h2 id='update-order-parameters'>Update Order Parameters</h2>
+<blockquote>
+<p>Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ship_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UPS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ship_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ground"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ship_to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1915 S Susan St"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Santa Ana"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92704"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer@domain.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5555555555"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='update-order-example-response'>Update Order Example Response</h2><h3 id='response-parameters'>Response Parameters</h3>
+<p><strong>status</strong>
+: Response type (ok, unprocessable_entity). Expected status codes are: [200, 422].</p>
+
+<p><strong>message</strong>
+: Message string describing success or reason for failure.</p>
+
+<p><strong>order</strong>
+: The id of the order requested.</p>
+<h2 id='success'>Success</h2><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order 7048816 successfully updated."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">7048816</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='failure'>Failure</h2><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unprocessable_entity"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This order is already packaged or shipped and cannot be updated."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">7048816</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='cancel-order'>Cancel Order</h1>
+<p>Submit an order cancellation request.</p>
+<h2 id='order-cancel-request'>Order Cancel Request</h2>
+<p><code>DELETE https://api.thedreamjunction.com/api/v3/orders/&lt;order_id&gt;</code><br>
+  <code>Content-Type: application/json</code><br>
+  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<h2 id='order-cancel-example-request'>Order Cancel Example Request</h2>
+<p><code>DELETE https://api.thedreamjunction.com/api/v3/orders/7048816</code><br>
+  <code>Content-Type: application/json</code><br>
+  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<h2 id='order-cancel-example-response'>Order Cancel Example Response</h2><h3 id='response-parameters'>Response Parameters</h3>
+<p><strong>status</strong>
+: Response type (ok, unprocessable_entity). Expected status codes are: [200, 422].</p>
+
+<p><strong>message</strong>
+: Message string describing success or reason for failure.</p>
+
+<p><strong>order</strong>
+: The id of the order requested.</p>
+<h2 id='success'>Success</h2><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order 7048816 successfully canceled."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">7048816</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='failure'>Failure</h2><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unprocessable_entity"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This order is already canceled."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">7048816</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unprocessable_entity"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This order is already in production and cannot be canceled."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">7048816</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='stock-check'>Stock Check</h1>
 <p>Request the current inventory status by SKU identifier.</p>
 <h2 id='stock-check-request'>Stock Check Request</h2>
 <p><code>GET https://api.thedreamjunction.com/api/v3/stocks/&lt;sku_identifier&gt;</code><br>

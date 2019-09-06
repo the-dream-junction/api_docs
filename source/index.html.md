@@ -11,6 +11,8 @@ includes:
   - new_order
   - order_status
   - multiple_order_status
+  - update_order
+  - cancel_order
   - stock_check
   - errors
 
