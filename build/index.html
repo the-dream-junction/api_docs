@@ -664,53 +664,82 @@ Status Code 422 Unprocessable Entity</p>
 : Customer purchase order provided with the order.</p>
 <h2 id='order-status-request-by-order-id'>Order Status Request by Order ID</h2>
 <p><code>GET https://api.thedreamjunction.com/api/v3/orders/&lt;order_id&gt;</code><br>
-  <code>Content-Type: application/json</code><br>
-  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+ <code>Content-Type: application/json</code><br>
+ <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
 <h2 id='example-request-by-order-id'>Example Request by Order ID</h2>
-<p><code>GET https://api.thedreamjunction.com/api/v3/orders/16724</code><br>
-  <code>Content-Type: application/json</code><br>
-  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<p><code>GET https://api.thedreamjunction.com/api/v3/orders/6724120</code><br>
+ <code>Content-Type: application/json</code><br>
+ <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
 <h2 id='order-status-request-by-purchase-order'>Order Status Request by Purchase Order</h2>
 <p><code>GET https://api.thedreamjunction.com/api/v3/orders/show?purchase_order=&lt;purchase_order&gt;</code><br>
-  <code>Content-Type: application/json</code><br>
-  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+ <code>Content-Type: application/json</code><br>
+ <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
 <h2 id='example-request-by-purchase-order'>Example Request by Purchase Order</h2>
 <p><code>GET https://api.thedreamjunction.com/api/v3/orders/show?purchase_order=5697626056</code><br>
-  <code>Content-Type: application/json</code><br>
-  <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
-<h2 id='order-status-example-response'>Order Status Example Response</h2><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16724</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"purchase_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5697626056"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-30T23:56:24.691 -07:00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"shipped_at"</span><span class="p">:</span><span class="w">  </span><span class="s2">"2018-07-01T12:21:24.691 -07:00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"client_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.25</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33448</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"customer_sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1415956-15"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"sku_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">202</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T-Shirt"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"workflow_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"shipments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"shipping_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smartmail Expedited"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tracking_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9374869903500930473876"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"search_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://webtrack.dhlglobalmail.com/?trackingnumber=9374869903500930473876"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+ <code>Content-Type: application/json</code><br>
+ <code>Authorization: Token token=&lt;16-24 character API key&gt;</code></p>
+<h2 id='order-status-example-response'>Order Status Example Response</h2><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6724120</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"purchase_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5697626056"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Santa Ana"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"received_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-01T23:00:24.691 -07:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-01T23:56:24.691 -07:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shipped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-02T12:21:24.691 -07:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"client_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.25</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job 10315476 - 5000_RED_L on order in the following purchase order(s) | PO: 131671 - Arriving: 02/01/20 - From: Alpha Broder | "</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fulfillment_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3344800</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"customer_sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1415956-15"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sku_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2032</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T-SHIRT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"workflow_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="w">
     </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"shipments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"shipping_carrier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DHL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shipping_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smartmail Expedited"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tracking_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9374869903500930473876"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"search_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://webtrack.dhlglobalmail.com/?trackingnumber=9374869903500930473876"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"delivered"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"order_status_notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job 10315476 - 5000_RED_L on order in the following purchase order(s) | PO: 131622 - Arriving: 02/06/20 - From: Alpha Broder |"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-05T11:53:08-08:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"service_requests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order status inquiry"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"workflow_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-10T15:20:14-08:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>id</strong>
-: Internal order id</p>
+: Internal order id.</p>
 
 <p><strong>purchase_order</strong>
-: Customer purchase order</p>
+: Customer purchase order number or string.</p>
+
+<p><strong>location</strong>
+: The name of the location where the order will be produced.</p>
+
+<p><strong>received_at</strong>
+: The timestamp of when the order was submitted via the API.</p>
+
+<p><strong>created_at</strong>
+: The timestamp of when the order was released to production.</p>
 
 <p><strong>shipped_at</strong>
-: Present if the order has shipped</p>
+: The timestamp of when the order was shipped. Present if the order has shipped.</p>
 
 <p><strong>status</strong>
 : Order status can be:</p>
@@ -728,19 +757,25 @@ Status Code 422 Unprocessable Entity</p>
 <p><strong>client_amount</strong>
 : Order cost expected to be billed to client. Note: This can change as the order changes within our system and does not typically include the shipping carrier charges.</p>
 
+<p><strong>order_notes</strong>
+: The latest order status note. A full list of notes is also available.</p>
+
+<p><strong>fulfillment_notes</strong>
+: A list of issues that are blocking the order or items from production. Our automated systems will update this list and customer service will contact the account when it is possible to rectify.</p>
+
 <p><strong>items</strong></p>
 
 <ul>
-<li>id: Internal item id</li>
-<li>customer_sku: Customer-provided SKU</li>
-<li>sku_id: Internal sku</li>
+<li>id: Internal item id.</li>
+<li>customer_sku: Customer-provided SKU name if provided.</li>
+<li>sku_id: Internal sku identification number.</li>
 <li>workflow_state: Item workflow state can be:
 
 <ul>
 <li>production_hold - The item production location is being evaluated for optimal production.</li>
 <li>intake_hold - Item order is being reviewed for address, artwork and inventory availability.</li>
 <li>open - The item is in production.</li>
-<li>completed - The item has been printed</li>
+<li>completed - The item has been printed.</li>
 <li>shipped - The item has been shipped.</li>
 <li>canceled - The item was canceled on request.</li>
 </ul></li>
@@ -749,12 +784,14 @@ Status Code 422 Unprocessable Entity</p>
 <p><strong>shipments</strong></p>
 
 <ul>
+<li>shipping_carrier: The name of the shipping carrier.</li>
 <li>shipping_method: Shipping method returned by the shipping provider.</li>
 <li>tracking_number: Tracking number returned by the shipping provider for the package.</li>
 <li>search_link: Link to shipping carrier website for tracking information and progress.</li>
+<li>delivered: If tracking allows, a boolean with delivery confirmation.</li>
 </ul>
 
-<p><strong>address</strong>  : Address fields included with the original order request or updated if requested.</p>
+<p><strong>address</strong> : Current delivery address for the order.</p>
 
 <ul>
 <li>ship_to_first_name</li>
@@ -769,12 +806,37 @@ Status Code 422 Unprocessable Entity</p>
 <li>ship_to_email</li>
 <li>ship_to_telephone</li>
 </ul>
+
+<p><strong>order_status_notes</strong></p>
+
+<ul>
+<li>note: The text contents of the note created by our production staff or inventory system.</li>
+<li>created_at: Timestamp of the date the note was created.</li>
+</ul>
+
+<p><strong>service_requests</strong></p>
+
+<ul>
+<li>reason: The reason provided for the service request.</li>
+<li>items_count: The number of items affected by the service request reason.</li>
+<li>created_at: Timestamp of the date the note was created.</li>
+<li>workflow_state: The status of the service request. Service Request workflow state can be:
+
+<ul>
+<li>open - The service request is open and enqueued to be reviewed.</li>
+<li>rejected - A Dream Junction employee has rejected the request with a follow-up.</li>
+<li>approved - The request has been approved and next steps are provided.</li>
+<li>closed - The request has been closed and can be completed or reopened.</li>
+<li>canceled - Customer has canceled the request.</li>
+<li>completed - The request has been closed and now completed. A request can still be reopened if not satisfactory.</li>
+</ul></li>
+</ul>
 <h2 id='order-status-response-no-order-found'>Order Status Response (no order found)</h2>
 <p>Status Code 404 Not Found</p>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_found"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An order with that ID cannot be located"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_found"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An order with that ID cannot be located"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre><h1 id='multiple-order-status'>Multiple Order Status</h1>
 <p>Request status of 100 most recent orders, with pagination.</p>
 <h2 id='multiple-order-status-request'>Multiple Order Status Request</h2>
@@ -789,28 +851,55 @@ Status Code 422 Unprocessable Entity</p>
   </span><span class="s2">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"purchase_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-30T23:56:24.691-07:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6724120</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"purchase_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5697626056"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Santa Ana"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"received_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-01T23:00:24.691 -07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-01T23:56:24.691 -07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shipped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-02T12:21:24.691 -07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"client_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.25</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job 10315476 - 5000_RED_L on order in the following purchase order(s) | PO: 131671 - Arriving: 02/01/20 - From: Alpha Broder | "</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fulfillment_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33448</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3344800</span><span class="p">,</span><span class="w">
             </span><span class="s2">"customer_sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1415956-15"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sku_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">202</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T-Shirt"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sku_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2032</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T-SHIRT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflow_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"shipments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"shipping_carrier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DHL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shipping_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smartmail Expedited"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tracking_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9374869903500930473876"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"search_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://webtrack.dhlglobalmail.com/?trackingnumber=9374869903500930473876"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"delivered"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"order_status_notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job 10315476 - 5000_RED_L on order in the following purchase order(s) | PO: 131622 - Arriving: 02/06/20 - From: Alpha Broder |"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-05T11:53:08-08:00"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"service_requests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order status inquiry"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"workflow_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"items_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-10T15:20:14-08:00"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">998</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"purchase_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654321"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-30T23:00:25.492-07:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">998</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"purchase_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654321"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-30T23:00:25.492-07:00"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
     </span><span class="err">...</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
